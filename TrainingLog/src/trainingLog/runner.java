@@ -41,10 +41,9 @@ public class runner
     		System.out.println(" -----------------");
     		System.out.println("| Date: "+runs.get(i).getDate() +"   |"+ runs.get(i).getDistance()  +  "   |" +  runs.get(i).getTime()  +" |");
     		System.out.println(" -----------------");
-    		//aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+    	
     	}
-    	//log lastLog = runs.get(runs.size() - 1);
-        //System.out.println("Last entered log: " + lastLog);
+    	
     
     }
     
