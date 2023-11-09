@@ -3,11 +3,12 @@ import java.util.ArrayList;
 public class sessions
 	{
 		
-		static ArrayList<log> sessions = new ArrayList<log>();
+		
+		static ArrayList<log> runs = new ArrayList<log>();
 
-		    public static void fillLog()
+		    public static void fillLog(int distance, String date, int time)
 		        {
-		        sessions.add(new log(distance, date, time));
+		        runs.add(new log(distance, date, time));
 		        
 		        }
 	}
