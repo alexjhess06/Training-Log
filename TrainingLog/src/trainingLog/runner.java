@@ -37,14 +37,20 @@ public class runner
         runs.add(new log(distance, date, time));
         }
     public static void getLog() {
-    	for(int i =0; i < 8; i++) {
-    		System.out.println(" -----------------");
-    		System.out.println("| Date: "+runs.get(i).getDate() +"   |"+ runs.get(i).getDistance()  +  "   |" +  runs.get(i).getTime()  +" |");
-    		System.out.println(" -----------------");
-    	
+    	//the new stuff
+    	System.out.println(" -------------------------------------------------");
+        System.out.printf("| %-12s | %-10s | %-10s |\n", "Date", "Distance", "Time");
+        System.out.println(" -------------------------------------------------");
+
+        for (int i = 0; i < runs.size(); i++) {
+            System.out.printf("| %-12s | %-10d | %-10d |\n", runs.get(i).getDate(), runs.get(i).getDistance(), runs.get(i).getTime());
+        }
+
+        System.out.println(" -------------------------------------------------");    	
     	}
-    	
+    
+
     
     }
     
-    }
+    
