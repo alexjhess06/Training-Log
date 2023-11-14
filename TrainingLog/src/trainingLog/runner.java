@@ -13,12 +13,12 @@ public class runner
     	static ArrayList<log> runs = new ArrayList<log>();
     public static void main(String[] args) 
         {
-       while(working = true) {
+       while(working) {
         work();
         fillLog();
         getLog();
        }
-       if(working = false) {
+       if(working == false) {
     	   System.out.println("Have a good day!");
        }
         }
@@ -52,6 +52,36 @@ public class runner
             System.out.printf("| %-12s | %-10d | %-10d |\n", runs.get(i).getDate(), runs.get(i).getDistance(), runs.get(i).getTime());
             System.out.println(" -----------------------------------------");
         }
+        System.out.println("Would you like a 10k race time prediction based on the run you just added? This will not work if the run is over 6 miles. \n The calculation is based on the assumption you will be racing the distance, and going all out."
+        		+ " \n Type (1) for yes or (2) for no.");
+        int prediction = userIntInput.nextInt();
+        if (prediction == 1) {
+            double ten;
+            if (runs.get(0).getDistance() <= 6) {
+                if (runs.get(0).getTime() == 1) {
+                    ten = runs.get(0).getTime() * 6 - 1;
+                } else if (runs.get(0).getTime() == 2) {
+                    ten = runs.get(0).getTime() * 3 - 2;
+                } else if (runs.get(0).getTime() == 3) {
+                    ten = runs.get(0).getTime() * 2 - 2.5;
+                } else if (runs.get(0).getTime() == 4) {
+                    ten = runs.get(0).getDistance() * 1.5 - 3;
+                } else if (runs.get(0).getTime() == 5) {
+                    ten = runs.get(0).getTime() * 1.2 - 3.5;
+                } else if (runs.get(0).getTime() == 6) {
+                    ten = runs.get(0).getTime() - 4;
+                } else {
+                    System.out.println("Unable to make calculation");
+                    return; // Exit the method if unable to make the calculation
+                }
+
+                System.out.println("Predicted 10k race time: " + ten + " minutes");
+            } else {
+                System.out.println("The run is over 6 miles, prediction not possible.");
+            }
+        }
+       
+      
 
       //  System.out.println(" -------------------------------------------------");    
         System.out.println("Would you like to add another run? Type (1) for yes or (2) for no.");
@@ -62,11 +92,7 @@ public class runner
         else {
         	working = false;
         }
-        System.out.println("Would you like a 10k time prediction? It will be based on a four mile run time. If you don't have a four mile run time it won't work. Type (1) for yes or (2) for no.");
-        int prediction = userIntInput.nextInt();
-        if(prediction == 1) {
-        	
-        }
+        
     	}
     
 

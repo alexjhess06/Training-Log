@@ -8,12 +8,14 @@ public class log
 	    String date;
 	    int time;
 	    
+	    
 
 	    public log (int d, String n, int t)
 	        {
 	        distance = d;
 	        date = n;
 	        time = t;
+	       
 	        }
 
 		public int getDistance()
@@ -45,7 +47,7 @@ public class log
 			{
 				this.time = time;
 			}
+	}
 
 		
-	    }
 	
