@@ -52,13 +52,14 @@ public class runner
             System.out.printf("| %-12s | %-10d | %-10d |\n", runs.get(i).getDate(), runs.get(i).getDistance(), runs.get(i).getTime());
             System.out.println(" -----------------------------------------");
         }
+        double lastRun = runs.get(runs.size()-1).getDistance();
         System.out.println("Would you like a 10k race time prediction based on the run you just added? This will not work if the run is over 6 miles. \n The calculation is based on the assumption you will be racing the distance, and going all out."
-        		+ " \n Type (1) for yes or (2) for no.");
+                + " \n Type (1) for yes or (2) for no.");
         int prediction = userIntInput.nextInt();
         if (prediction == 1) {
-            double ten;
-            if (runs.get(0).getDistance() <= 6) {
-                if (runs.get(0).getTime() == 1) {
+            double ten = 0; // Initialize here
+            if (lastRun <= 6) {
+                if (lastRun == 1) {
                     ten = runs.get(0).getTime() * 6 - 1;
                 } else if (runs.get(0).getTime() == 2) {
                     ten = runs.get(0).getTime() * 3 - 2;
