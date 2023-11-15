@@ -2,8 +2,10 @@ package trainingLog;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Random;
 public class runner 
     {
+    	static Random rand = new Random();
     	static Scanner userIntInput = new Scanner(System.in);
         static Scanner userStringInput = new Scanner(System.in);
     	static int distance = 0;
@@ -13,13 +15,15 @@ public class runner
     	static ArrayList<log> runs = new ArrayList<log>();
     public static void main(String[] args) 
         {
+       //double randNum1 = rand.nextDouble();
+       
        while(working) {
         work();
         fillLog();
         getLog();
        }
        if(working == false) {
-    	   System.out.println("Have a good day!");
+    	   System.out.println("Have a good run today!");
        }
         }
     
@@ -44,36 +48,47 @@ public class runner
         }
     public static void getLog() {
     	//the new stuff
-    	System.out.println(" -----------------------------------------");
-        System.out.printf("| %-12s | %-10s | %-10s |\n", "Date", "Distance", "Time");
-        System.out.println(" -----------------------------------------");
+    	System.out.println(" --------------------------------------------");
+        System.out.printf("| %-12s | %-10s | %-10s |\n", "Date", "Distance (mi)", "Time (min)");
+        System.out.println(" --------------------------------------------");
 
         for (int i = 0; i < runs.size(); i++) {
-            System.out.printf("| %-12s | %-10d | %-10d |\n", runs.get(i).getDate(), runs.get(i).getDistance(), runs.get(i).getTime());
-            System.out.println(" -----------------------------------------");
+            System.out.printf("| %-12s | %-13d | %-10d |\n", runs.get(i).getDate(), runs.get(i).getDistance(), runs.get(i).getTime());
+            System.out.println(" --------------------------------------------");
         }
+        double unoOrDos = Math.random()*1;
+       
+        double random1 = Math.random()+2;
         double lastRun = runs.get(runs.size()-1).getDistance();
+        double lastTime = runs.get(runs.size()-1).getTime();
+     //   System.out.println(lastTime);
         System.out.println("Would you like a 10k race time prediction based on the run you just added? This will not work if the run is over 6 miles. \n The calculation is based on the assumption you will be racing the distance, and going all out."
                 + " \n Type (1) for yes or (2) for no.");
         int prediction = userIntInput.nextInt();
         if (prediction == 1) {
-            double ten = 0; // Initialize here
+            double ten = 0;
             if (lastRun <= 6) {
                 if (lastRun == 1) {
-                    ten = runs.get(0).getTime() * 6 - 1;
-                } else if (runs.get(0).getTime() == 2) {
-                    ten = runs.get(0).getTime() * 3 - 2;
-                } else if (runs.get(0).getTime() == 3) {
-                    ten = runs.get(0).getTime() * 2 - 2.5;
-                } else if (runs.get(0).getTime() == 4) {
-                    ten = runs.get(0).getDistance() * 1.5 - 3;
-                } else if (runs.get(0).getTime() == 5) {
-                    ten = runs.get(0).getTime() * 1.2 - 3.5;
-                } else if (runs.get(0).getTime() == 6) {
-                    ten = runs.get(0).getTime() - 4;
+                    ten = lastTime * 6 - 1;
+                } else if (lastRun == 2) {
+                    ten = lastTime * 3 - 2;
+                } else if (lastRun == 3) {
+                    ten = lastTime * 2 - 2.5;
+                } else if (lastRun == 4) {
+                    ten = lastTime * 1.5 - 3;
+                } else if (lastRun == 5) {
+                    ten = lastTime * 1.2 - 3.5;
+                } else if (lastRun == 6) {
+                    ten = lastTime - 4;
                 } else {
                     System.out.println("Unable to make calculation");
-                    return; // Exit the method if unable to make the calculation
+                    return; 
+                }
+                if(unoOrDos == 0) {
+                	ten = ten - random1;
+                }
+                else if(unoOrDos == 1) {
+                	ten = ten + random1;
                 }
 
                 System.out.println("Predicted 10k race time: " + ten + " minutes");
